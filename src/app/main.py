@@ -20,16 +20,4 @@ def lambda_handler(event, context):
     calculated_properties = _get_basic_properties(
         fluid_name, fluid_temperature, fluid_pressure
     )
-    return {
-        "statusCode": 200,
-        "body": json.dumps({"results": calculated_properties}),
-    }
-
-
-test_event = {}
-
-test_event["fluid_name"] = "Water"
-test_event["fluid_temperature"] = 300
-test_event["fluid_pressure"] = 101325
-
-print(lambda_handler(test_event, {}))
+    return json.dumps({"status_code": 200, "body": {"results": calculated_properties}})
