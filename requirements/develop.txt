@@ -1,2 +1,4 @@
 -r prod.txt
 black==22.8.0
+pylint==2.15.2
+pytest==7.1.3
