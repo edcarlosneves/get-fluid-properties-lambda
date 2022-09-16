@@ -12,7 +12,6 @@ def _get_basic_properties(fluid_name, fluid_temperature, fluid_pressure):
         "rho": {"value": rho, "unit": "kg/m3"},
     }
 
-
 def lambda_handler(event, context):
     fluid_name = event["fluid_name"]
     fluid_temperature = event["fluid_temperature"]

@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda-get-fluid-properties
+
+  Sample SAM Template for lambda-get-fluid-properties
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  GetFluidPropertiesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda_get_fluid_properties/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Events:
+        GetFluidProperties:
+          Type: Api
+          Properties:
+            Path: /calculate
+            Method: post
+Outputs:
+  GetFluidPropertiesAPI:
+    Description: 'API Gateway endpoint url for calculate fluid properties'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Stage/calculate'
+  GetFluidPropertiesFunction:
+    Description: 'Calculate fluid properties ARN'
+    Value: !GetAtt GetFluidPropertiesFunctionRole.Arn
